@@ -27,12 +27,8 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.1.1",
     "axios": "^0.18.1",
-<<<<<<< HEAD
     "babel-preset-env": "^1.7.0",
     "bcryptjs": "^2.4.3",
-=======
-    "bcrypt": "^1.0.3",
->>>>>>> f51d2be37fc946a53ddd02de8e9b28c036d233cd
     "body-parser": "^1.18.2",
     "config": "^1.30.0",
     "connect-ensure-login": "^0.1.1",
@@ -46,14 +42,9 @@
     "nuxt": "^2.8.1",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-<<<<<<< HEAD
     "sequelize": "^6.0.0",
     "sequelize-cli": "^5.5.0",
     "tedious": "^6.3.0",
-=======
-    "sequelize": "^5.3.0",
-    "sequelize-cli": "^4.0.0",
->>>>>>> f51d2be37fc946a53ddd02de8e9b28c036d233cd
     "toml": "^2.3.3"
   },
   "pre-commit": [
