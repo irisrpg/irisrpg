@@ -1,7 +1,6 @@
 {
 	"name": "irisrpg-client",
 	"version": "1.0.0",
-	"private": true,
 	"license": "MIT",
 	"scripts": {
 		"lint": "vue-cli-service lint",
