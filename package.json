@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Iris RPG",
   "scripts": {
-    "test": "cd server && npm test"
+    "test": "cd server && npm test",
+    "install": "cd server && npm install"
   },
   "repository": {
     "type": "git",

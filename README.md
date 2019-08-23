@@ -1,99 +1,93 @@
 ## Iris RPG [![Build Status](https://travis-ci.org/irisrpg/irisrpg.svg?branch=master)](https://travis-ci.org/irisrpg/irisrpg)
 
-### Prerequisite
-- **Node.js:** `>=8.4.0` and **npm:** `>=5.3.0`
-- **MySQL|MariaDB:** `>=5.7.0`
+Iris é um sistema feito para RPG's onlines(Como Dungeons & Dragons, Tormenta 3D&T e outros).
+Ele conta com um sistema de criação de personagens, loja de itens, salas de encenações, sistema de quest e muitos outros!
 
-### Configure
-For application config use [node-config](https://github.com/lorenwest/node-config) with [toml](https://github.com/toml-lang/toml) files
+## Instalação
 
-create *`config/local-development.toml`* for development config
-```toml
-# config/local-development.toml
-env = "development"
+A instalação do sistema iris é bem simples. Cláro você vai precisar de um domínio para poder hostear tudo.
 
-[db]
-username = "dbuser"
-password = "dbpass"
-database = "dbname"
-```
+### Prerequisitos
 
-edit *`config/default.toml`* for default config
-```toml
-# config/default.toml
-env = "production"
+Para poder usar o Iris, você precisa ter:
 
-host = "host"
-port = "port"
+- **Node.js:** `>=12.6.0` and **npm:** `>=6.11.1`
+- **Servidor De Banco De Dados(MySQL, MariaDB, PostgreSQL ou Microsoft SQL)[Opcional, no caso de nenhum disponível Iris irá usar um banco de dados SQLite interno.]**
 
-[db]
-username = "dbuser"
-password = "dbpass"
-host = "dbhost"
-database = "dbname"
+### Instalação
 
-# migration, seeder config
-dialect = "mysql"
-seederStorage = "sequelize"
+A instalação é bem simples.
 
-# models default config
-operatorsAliases = false
+#### Back-End
 
-  [db.define]
-  freezeTableName = true
-  engine = "InnoDB"
-  charset = "utf8mb4"
-  collate = "utf8mb4_general_ci"
+Na pasta `server`, execute estes comandos:
 
-[session]
-secret = 'update-for-prod-in_local-production.toml'
-resave = true
-saveUninitialized = true
-
-  [session.cookie]
-  maxAge = 6048e5 # 7 days
-```
-
-### Development
-```sh
-# install dependencies
-npm install
-# create database table and seed with data
-npm run migration
-
-# run development server
-npm run dev
-
-# for debugging
-npm run dev:inspect
-
-```
-
-- Open http://127.0.0.1:3000 in browser
-- Available application **[components](server/components/README.md)**
-
-### Migrations
-Sequelize cli is used to generate migrations and seeder files
-
-- **create database:** `./node_modules/.bin/sequelize db:create`
-- Auto generate model and migration file
 ```bash
-# Generate Task model
-mkdir server/api/task
-
-./node_modules/.bin/sequelize model:generate\
-  --models-path server/api/task --name Task\
-  --attributes name:STRING,description:TEXT,startAt:DATE,endAt:DATE,completedAt:DATE
+$ npm install # Instala depencências
+$ npm install -g sequelize-cli # Instala CLI do Sequelize
 ```
-- **Run migration:** `./node_modules/.bin/sequelize db:migrate`
-- for more [see this](http://docs.sequelizejs.com/manual/tutorial/migrations.html)
+
+Altere o arquivo `database/config/config.json` para que tenha as configurações do seu servidor de banco de dados(caso tenha um).
+
+> Nota: Apenas o `production` precisa ser alterado, o `development` e `test` devem ser alterados apenas se for desenvolver o iris.
+
+Agora execute os seguintes comandos:
+
+```bash
+$ sequelize db:migrate # Para inicializar o banco de dados
+$ sequelize db:seed:all # Para adicionar as informações iniciais para poder começar a usar
+```
+
+Agora crie um arquivo `.env` (veja o arquivo `.env.example` para exemplo) e altere o `JWT_SECTRET`(Necessário) e o `NODE_PORT`(opcional, caso não queira na porta `3000`) a gosto.
+
+### Front-End
+
+Na pasta `client`, crie um arquivo `.env` (veja o arquivo `.env.example` para exemplo) e altere o `SERVER_URL` para o caminho onde está hosteando o Back-End(exemplo: `http://127.0.0.1:3000`).
+
+Agora execute os seguintes comandos:
+
+```bash
+$ npm install # Instala depencências
+$ NODE_ENV=production npm run build # Compila uma build de produção
+```
+
+Agora copie o conteúdo da pasta `dist` para o diretório root do seu servidor Apache/Nginx/Outros.
 
 
-### References
+## Executando os testes
 
-1. [Nuxt.js](https://nuxtjs.org/) - server-side rendering
-2. [Element-UI](http://element.eleme.io/#/en-US/component/installation) - ui library
-3. [Sequelize](https://github.com/sequelize/sequelize) - mysql orm
-4. [Passport.js](http://passportjs.org/) - authentication library
-5. [node-config](https://github.com/lorenwest/node-config) - application configuration
-6. [TOML](https://github.com/toml-lang/toml) - configuration files
+Levando em consideração que:
+- As dependencias já estão instaladas
+- O servidor de banco de dados está operando(no caso de estar usando um)
+- Os arquivos `server/.env`,`server/database/config/config.json` e `client/.env` estão configurados
+
+Basta apenas executar os comandos:
+```bash
+$ npm install -g mocha # Instala o mocha globalmente
+$ npm test # Executa os testes
+```
+
+## Feito com:
+
+* [Express](https://expressjs.com/) - Framework usada no Back-End
+* [Vue.js](https://vuejs.org/) - Framework usada no Front-End
+* [Sequelize](https://sequelize.org/) - Comunicação com banco de dados
+* [Mocha](https://mochajs.org/) - Framework para unidades de testes
+
+## Contribuindo
+
+Por favor leia o arquivo [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) para detalhes de nosso código de conduta e o processo de enviar um `pull request` para o projeto. Toda ajuda é muito bem vinda!
+
+## Versões
+
+Utilizamos o padrão [SemVer](http://semver.org/) para controle de número de versões. Para ver as versões disponívels, veja [releses](https://github.com/irisrpg/irisrpg/releases). 
+
+## Authors
+
+* **Akatsuki Levi** - *Trabalho inicial* - [AkatsukiLevi](https://github.com/akatsukilevi)
+
+Também veja a lista de [Contribuições](https://github.com/irisrpg/irisrpg/contributors) para mais informações de quem colaborou com o projeto
+
+## Licença
+
+Este projeto está licenciado com a licença MIT - veja o arquivo [LICENSE.md](LICENSE.md) para mais detalhes.
