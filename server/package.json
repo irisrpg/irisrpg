@@ -1,5 +1,5 @@
 {
-  "name": "irisrpg",
+  "name": "irisrpg-server",
   "version": "1.0.0",
   "description": "IrisRPG Server",
   "main": "app.js",

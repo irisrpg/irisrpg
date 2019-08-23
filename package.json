@@ -1,0 +1,22 @@
+{
+  "name": "irisrpg",
+  "version": "1.0.0",
+  "description": "Iris RPG",
+  "scripts": {
+    "test": "cd server && npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/irisrpg/irisrpg.git"
+  },
+  "keywords": [
+    "rpg",
+    "iris"
+  ],
+  "author": "Akatsuki Levi <akatsukilevi@yahoo.co.jp>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/irisrpg/irisrpg/issues"
+  },
+  "homepage": "https://github.com/irisrpg/irisrpg#readme"
+}
