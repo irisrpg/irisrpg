@@ -7,7 +7,7 @@ module.exports = {
 				allowNull: false,
 				autoIncrement: true,
 				primaryKey: true,
-				type: Sequelize.INTEGER,
+				type: Sequelize.INTEGER
 			},
 			name: {
 				allowNull: false,
@@ -25,9 +25,10 @@ module.exports = {
 			createdAt: {
 				allowNull: false,
 				type: Sequelize.DATE,
+				defaultValue: new Date()
 			},
 			updatedAt: {
-				allowNull: false,
+				allowNull: true,
 				type: Sequelize.DATE,
 			},
 		});

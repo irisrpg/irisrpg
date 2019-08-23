@@ -81,7 +81,7 @@ app.use(passport.initialize());
 passport.use(strategy);
 
 // init auth router
-// require("./routes/auth")(app, users, passport, passportJWT, db);
+require("./routes/auth")(app, users, sessionManager, passport, passportJWT, db, logger.initLogger("Auth System"));
 
 // init other routes
 const Router = require("./routes");

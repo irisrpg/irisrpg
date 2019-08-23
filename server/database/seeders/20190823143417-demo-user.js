@@ -7,9 +7,7 @@ module.exports = {
 			{
 				name: 'John Doe',
 				email: 'john.doe@iris.com',
-				password: bcrypt.hashSync('password'),
-				createdAt: new Date(),
-				updatedAt: new Date()
+				password: bcrypt.hashSync('password')
 			}
 		], {});
 	},

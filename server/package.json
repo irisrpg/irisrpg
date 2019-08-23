@@ -4,6 +4,7 @@
   "description": "IrisRPG Server",
   "main": "app.js",
   "scripts": {
+    "start": "nodemon",
     "test": "mocha tests/index.js"
   },
   "repository": {
@@ -24,6 +25,7 @@
     "jsonwebtoken": "^8.5.1",
     "mariadb": "^2.1.0",
     "mysql2": "^1.6.5",
+    "nodemon": "^1.19.1",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "pg": "^7.12.1",
@@ -32,6 +34,7 @@
     "sequelize": "^5.16.0",
     "sqlite3": "^4.1.0",
     "tedious": "^6.3.0",
+    "uuid": "^3.3.3",
     "winston": "^3.2.1"
   },
   "devDependencies": {
