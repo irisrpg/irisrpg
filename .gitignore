@@ -69,3 +69,6 @@ config/local-development.toml
 # other files
 .vscode
 .DS_Store
+
+# database files
+server/database/db
