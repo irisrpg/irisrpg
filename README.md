@@ -71,6 +71,7 @@ $ npm test # Executa os testes
 
 * [Express](https://expressjs.com/) - Framework usada no Back-End
 * [Vue.js](https://vuejs.org/) - Framework usada no Front-End
+* [Shards Dashboard Vue](https://github.com/DesignRevision/shards-dashboard-vue) - Dashboard usado no Front-End
 * [Sequelize](https://sequelize.org/) - Comunicação com banco de dados
 * [Mocha](https://mochajs.org/) - Framework para unidades de testes
 
