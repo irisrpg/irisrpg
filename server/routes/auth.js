@@ -108,15 +108,16 @@ module.exports = function(app, users, session, passport, passportJWT, db, logger
         const ip = req.body.ip;
 
         if (email && password && ip) {
-            Users.getUser(email).then((user) => {
+            users.getUser(email).then((user) => {
                 if (!user) {
                     res.status(401).json({
                         "error": 'No such user found'
                     });
                 } else {
                     if (bcrypt.compareSync(password, user.password)) {
-                        let token = jwt.sign({ id: user.id, type: 1, timestamp: Date.now() }, jwtOptions.secretOrKey);
+                        let token = jwt.sign({ id: user.id, type: 1, timestamp: Date.now() }, process.env.JWT_SECTRET);
                         session.createSession(user.id, 1, token, ip).then(() => {
+                            delete user.password;
                             res.json({
                                 "status": 'ok',
                                 "token": token,
@@ -135,6 +136,40 @@ module.exports = function(app, users, session, passport, passportJWT, db, logger
                             "error": 'Password is incorrect'
                         });
                     }
+                }
+            });
+        } else {
+            res.status(401).json({
+                "status": "error",
+                "error": 'Invalid Parameters'
+            });
+        }
+    });
+
+    app.post('/auth/register', function(req, res) {
+        const name = req.body.name;
+        const email = req.body.email;
+        const password = req.body.password;
+
+        if (name && email && password) {
+            users.getUser(email).then((user) => {
+                if (user) {
+                    res.status(409).json({
+                        "error": 'user already exists'
+                    });
+                } else {
+                    users.createUser(name, email, password).then(() => {
+                        res.status(200).json({
+                            "status": "ok",
+                            "name": name,
+                            "email": email
+                        });
+                    }, (err) => {
+                        this.logger.error("Error caught: " + err);
+                        res.status(500).json({
+                            error: 'Failed to create user'
+                        });
+                    });
                 }
             });
         } else {

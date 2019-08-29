@@ -1,27 +1,48 @@
-/* eslint-disable */
+// The Vue build version to load with the `import` command
+// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
+import 'core-js/es6/promise';
+import 'core-js/es6/string';
+import 'core-js/es7/array';
+// import cssVars from 'css-vars-ponyfill'
 import Vue from 'vue';
-import ShardsVue from 'shards-vue';
-
-// Styles
-import 'bootstrap/dist/css/bootstrap.css';
-import '@/scss/shards-dashboards.scss';
-import '@/assets/scss/date-range.scss';
-
-// Core
-import App from './App.vue';
+import BootstrapVue from 'bootstrap-vue';
+import App from './App';
 import router from './router';
+import Axios from 'axios';
 
-// Layouts
-import Default from '@/layouts/Default.vue';
+const token = localStorage.getItem('token');
 
-ShardsVue.install(Vue);
+var options = {
+  baseURL: 'http://localhost:3000/'
+};
 
-Vue.component('default-layout', Default);
+if (token) {
+  options.headers['Authorization'] = 'JWT '+token;
+}
 
-Vue.config.productionTip = false;
-Vue.prototype.$eventHub = new Vue();
+Vue.prototype.$http = Axios.create(options);
 
+Vue.use(BootstrapVue);
+
+Vue.config.errorHandler = (error) => {
+  console.error(error);
+};
+
+
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+
+library.add(fas);
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
+
+/* eslint-disable no-new */
 new Vue({
+  el: '#app',
   router,
-  render: h => h(App),
-}).$mount('#app');
+  template: '<App/>',
+  components: {
+    App
+  }
+})
