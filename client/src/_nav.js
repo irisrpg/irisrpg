@@ -21,8 +21,6 @@ export default [
     group("Perfil"),
     page("Meu Perfil", "/user/profile", "user"),
     page("Meus Amigos", "/user/friends", "users"),
-    page("Meus Personagens", "/user/characters", "street-view"),
-    page("Minhas Quests", "/user/quests", "list"),
 
     // world group
     group("O Mundo"),

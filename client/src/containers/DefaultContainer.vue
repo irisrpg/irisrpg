@@ -15,6 +15,7 @@
 			</b-navbar-nav>
 			<b-navbar-nav class="ml-auto">
 				<UserBar/>
+				<AsideToggler class="d-none d-lg-block" />
 			</b-navbar-nav>
 		</AppHeader>
 		<div class="app-body">
@@ -31,6 +32,9 @@
 					<router-view></router-view>
 				</div>
 			</main>
+			<AppAside fixed>
+				<DefaultAside/>
+			</AppAside>
 		</div>
 		<TheFooter>
 			<!--footer-->
@@ -44,6 +48,7 @@
 <script>
 	import _nav from '@/_nav';
 	import { Header as AppHeader, SidebarToggler, Sidebar as AppSidebar, SidebarFooter, SidebarForm, SidebarHeader, SidebarMinimizer, SidebarNav, Aside as AppAside, AsideToggler, Footer as TheFooter, Breadcrumb } from '@coreui/vue'
+	import DefaultAside from './Aside';
 	import UserBar from './UserBar';
 
 	export default {
@@ -61,6 +66,7 @@
 			SidebarHeader,
 			SidebarNav,
 			SidebarMinimizer,
+			DefaultAside,
 			UserBar
 		},
 		data () {

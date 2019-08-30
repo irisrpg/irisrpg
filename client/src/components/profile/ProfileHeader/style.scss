@@ -1,0 +1,72 @@
+.profile_header {
+    background-size: cover!important;
+    height: 20vw;
+    position: relative;
+    top: -1.875rem;
+    left: -2.1vw;
+    width: 105%;
+}
+
+.profile_header > .overlay {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    position: relative;
+}
+
+.profile_header > .overlay > .container {
+    position: absolute;
+    bottom: 0;
+    left: 1vw;
+}
+
+.profile_header > .overlay > .overlay-buttons {
+    position: absolute;
+    bottom: -1.5vw;
+    right: 2vw;
+}
+
+.profile_header_info {
+    display: block;
+}
+
+.profile_header_info > div:nth-child(1), .profile_header_counters {
+    display: inline-flex;
+}
+
+.profile_header_info_names {
+    color: white;
+    font-weight: bold;
+    display: grid;
+}
+
+.profile_header_info_names > .profile_name {
+    font-size: 25px;
+}
+
+.profile_header_info_names > .profile_name > small {
+    margin-left: 5px;
+}
+
+.profile_header_info_names > .profile_header_titles > span:not(:last-child) {
+    margin-right: 5px;
+}
+
+.profile_header_picture {
+    background-size: cover!important;
+    width: 96px;
+    height: 96px;
+    margin-right: 10px;
+}
+
+.profile_header_counters {
+    margin-top: 3vw;
+}
+
+.profile_header_counters > .nav > .nav-item:not(.active) {
+    color: white;
+}
+
+.profile_header_counters > .counter.active {
+    border-bottom: 3px solid #2196f3;
+}

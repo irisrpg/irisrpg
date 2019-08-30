@@ -1,0 +1,69 @@
+.post-card-header{
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+.profile-picture {
+    background-size: cover!important;
+    width: 48px;
+    height: 48px;
+    margin-right: 5px;
+}
+
+.profile_titles > span:not(:last-child) {
+    margin-right: 5px;
+}
+
+.post-info {
+    display: grid;
+}
+
+.post-info > .title {
+    font-weight: bolder;
+}
+
+.post-card-body {
+    padding: 0px;
+}
+
+.post-media {
+    text-align: center;
+    justify-content: middle;
+    width: 100%;
+}
+
+.post-content {
+    border-left: 3px solid #dadada;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    padding-right: 20px;
+}
+
+.post-card-footer {
+    padding: 0px;
+}
+
+.footer-actions {
+    padding: 0px;
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.footer-actions > .text-right {
+    justify-content: right;
+}
+
+.commentLine {
+    padding-bottom: 0px;
+    padding-left: 0px;
+}
+
+.commentLine .post-card-header {
+    padding-left: 10px;
+    margin-bottom: 5px;
+}

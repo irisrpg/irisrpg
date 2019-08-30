@@ -1,93 +1,154 @@
-<style>
-    .grid {
-        max-width: 175px;
-        background: #222;
-        margin: 0 auto;
-        padding: 1em 0;
-        border-radius: 3px;
-    }
-
-    .grid .server {
-        display: block;
-        max-width: 68%;
-        height: 20px;
-        background: rgba(255,255,255,.15);
-        box-shadow: 0 0 0 1px black inset;
-        margin: 10px 0 20px 30px;
-    }
-
-    .grid .server:before {
-        content: "";
-        position: relative;
-        top: 7px;
-        left: -18px;
-        display: block;
-        width: 6px;
-        height: 6px;
-        background: green;
-        border: 1px solid black;
-        border-radius: 6px;
-        margin-top: 7px;
-    }
-    
-    @-webkit-keyframes pulse {
-        0% {background: rgba(255,255,255,.15);}
-        100% {background: #ae1508;}
-    }
-
-    .grid .server:nth-child(3):before {
-        background: rgba(255,255,255,.15);
-        -webkit-animation: pulse .5s infinite alternate;
-    }
-
-    @-webkit-keyframes pulse_three {
-        0% {background: rgba(255,255,255,.15);}
-        100% {background: #ff8400;}
-    }
-
-    .grid .server:nth-child(5):before {
-        background: rgba(255,255,255,.15);
-        -webkit-animation: pulse_three .7s infinite alternate;
-    }
-
-    @-webkit-keyframes pulse_two {
-        0% {background: rgba(255,255,255,.15);}
-        100% {background: #18a506;}
-    }
-    .grid .server:nth-child(1):before {
-        background: rgba(255,255,255,.15);
-        -webkit-animation: pulse_two .1s infinite alternate;
-    }
-    .grid .server:nth-child(2):before {
-        background: rgba(255,255,255,.15);
-        -webkit-animation: pulse_two .175s infinite alternate;
-    }
-    .grid .server:nth-child(4):before {
-        background: rgba(255,255,255,.15);
-        -webkit-animation: pulse_two .1s infinite alternate;
-    }
-</style>
-
 <template>
     <div class="animated fadeIn">
-        <b-row class="justify-content-center">
-            <b-col md="6" class="text-center">
-                <div class="grid">
-                    <span class="server"></span>
-                    <span class="server"></span>
-                    <span class="server"></span>
-                    <span class="server"></span>
-                    <span class="server"></span>
-                </div>
-                <h1>Em Desenvolvimento!</h1>
-                <p class="text-muted">Esta página encontra-se em desenvolvimento. Por favor tente novamente na próxima atualuzação!</p>
-            </b-col>
-        </b-row>
+        <FriendsGrid :friends="friends"/>
     </div>
 </template>
 
 <script>
-export default {
-    name: 'EXAMPLE'
-}
+    import FriendsGrid from '@/components/friends/FriendsGrid';
+    
+    export default {
+        name: 'FriendsList',
+        components: {
+            FriendsGrid
+        },
+        data() {
+            return {
+                friends: [
+                    {
+                        name: "Tenryuu",
+                        nickname: "天龍",
+                        level: 20,
+                        isLeader: false,
+                        isCurator: false,
+                        isDev: false,
+                        titles: [
+                            {
+                                name: "Mago Das Sombras",
+                                class: "purple"
+                            },
+                            {
+                                name: "Mestre Das Lâminas",
+                                class: "red"
+                            }
+                        ],
+                        media: {
+                            profilePicture: 'https://avatarfiles.alphacoders.com/159/159260.jpg',
+                            profileBackground: 'https://c4.wallpaperflare.com/wallpaper/130/834/476/anime-kantai-collection-tenryuu-kancolle-wallpaper-thumb.jpg'
+                        }
+                    },
+                    {
+                        name: "Tatsuta",
+                        nickname: "天龍",
+                        level: 20,
+                        isLeader: false,
+                        isCurator: false,
+                        isDev: false,
+                        titles: [
+                            {
+                                name: "Mago Das Sombras",
+                                class: "purple"
+                            },
+                            {
+                                name: "Mestre Das Lâminas",
+                                class: "red"
+                            }
+                        ],
+                        media: {
+                            profilePicture: 'https://images-cdn.9gag.com/photo/a9Ajq96_700b.jpg',
+                            profileBackground: 'https://images3.alphacoders.com/855/thumb-1920-855457.png'
+                        }
+                    },
+                    {
+                        name: "Kongou",
+                        nickname: "金剛",
+                        level: 20,
+                        isLeader: false,
+                        isCurator: false,
+                        isDev: false,
+                        titles: [
+                            {
+                                name: "Mago Da Luz",
+                                class: "yellow"
+                            },
+                            {
+                                name: "Mestre Das Armas",
+                                class: "red"
+                            }
+                        ],
+                        media: {
+                            profilePicture: 'http://s3.amazonaws.com/cdn.roosterteeth.com/uploads/images/c129da3b-eada-40af-966d-6b662904e960/md/Kongou553c0b6940651.jpg',
+                            profileBackground: 'https://www.wallpapermaiden.com/wallpaper/8095/download/2560x1440/kantai-collection-kongou-profile-view-brown-hair-japanese-traditional-clothes.jpg'
+                        }
+                    },
+                    {
+                        name: "Yamato",
+                        nickname: "大和?",
+                        level: 20,
+                        isLeader: false,
+                        isCurator: false,
+                        isDev: false,
+                        titles: [
+                            {
+                                name: "Hotel",
+                                class: "info"
+                            },
+                            {
+                                name: "Suporte",
+                                class: "success"
+                            }
+                        ],
+                        media: {
+                            profilePicture: 'https://www.wallpaperup.com/uploads/wallpapers/2014/08/17/423211/891630255e16a1b641badad1c7e60636-700.jpg',
+                            profileBackground: 'https://images.alphacoders.com/573/thumb-1920-573331.jpg'
+                        }
+                    },
+                    {
+                        name: "Shimakaze",
+                        nickname: "島風",
+                        level: 20,
+                        isLeader: false,
+                        isCurator: false,
+                        isDev: false,
+                        titles: [
+                            {
+                                name: "Criança",
+                                class: "primary"
+                            },
+                            {
+                                name: "Aspecto da liberdade",
+                                class: "yellow"
+                            }
+                        ],
+                        media: {
+                            profilePicture: 'http://41.media.tumblr.com/9583aafeb5cacd0d0252c9a72f0cf4e6/tumblr_nkpbdtpJAT1rrr564o1_500.jpg',
+                            profileBackground: 'https://images6.alphacoders.com/453/thumb-1920-453889.jpg'
+                        }
+                    },
+                    {
+                        name: "Yuudachi",
+                        nickname: "夕立",
+                        level: 20,
+                        isLeader: false,
+                        isCurator: false,
+                        isDev: false,
+                        titles: [
+                            {
+                                name: "POI",
+                                class: "yellow"
+                            },
+                            {
+                                name: "Mestre Das Armas",
+                                class: "red"
+                            }
+                        ],
+                        media: {
+                            profilePicture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNtwScS_STTLIdg1_tTQm5-CGrUxXXIb9eLCLM9urFHC9wJDjC',
+                            profileBackground: 'https://i.ytimg.com/vi/TIe1lleCXmc/maxresdefault.jpg'
+                        }
+                    }
+                ]
+            }
+        }
+    }
 </script>

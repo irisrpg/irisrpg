@@ -4,11 +4,7 @@
 			<img src="img/avatar.png" class="img-avatar" />
 		</template>\
 		<template slot="dropdown">
-			<b-dropdown-header tag="div" class="text-center">
-				<strong>Configurações</strong>
-			</b-dropdown-header>
-				<b-dropdown-item><i class="fa fa-user" /> Meu Perfil</b-dropdown-item>
-			</b-dropdown-item>
+			<b-dropdown-item @click="$router.push('/user/profile')"><i class="fa fa-user" /> Meu Perfil</b-dropdown-item>
 			<b-dropdown-divider />
 			<b-dropdown-item @click="doLogout">
 				<i class="fa fa-lock" /> Logout
