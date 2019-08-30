@@ -80,7 +80,7 @@
                     <span class="server"></span>
                 </div>
                 <h1>Em Desenvolvimento!</h1>
-                <p class="text-muted">Esta página encontra-se em desenvolvimento. Por favor tente novamente na próxima atualuzação!</p>
+                <p class="text-muted">Esta página encontra-se em desenvolvimento. Por favor tente novamente na próxima atualização!</p>
             </b-col>
         </b-row>
     </div>
