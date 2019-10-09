@@ -1,0 +1,38 @@
+{
+  "name": "irisrpg-server",
+  "description": "IrisRPG Server",
+  "website": "https://github.com/irisrpg/irisrpg#readme",
+  "repository": "https://github.com/irisrpg/irisrpg",
+  "logo": "https://avatars3.githubusercontent.com/u/8597527?v=4&s=400",
+  "success_url": "/",
+  "addons": ["mongolab"],
+  "env": {
+    "NPM_CONFIG_PRODUCTION": {
+      "value": "false"
+    },
+    "NODE_ENV": {
+      "value": "production"
+    },
+    "PROCESS_TYPE": {
+      "value": "app"
+    },
+    "PORT": {
+      "value": "8088"
+    },
+    "CLIENT_URI": {
+      "value": "https://github.com/irisrpg/irisrpg#readme"
+    },
+    "MONGODB_URI": {
+      "value": ""
+    },
+    "SECRET_KEY": {
+      "value": ""
+    },
+    "MAILER_KEY": {
+      "value": ""
+    },
+    "MAILER_USER": {
+      "value": "donotreply@donotreply.com"
+    }
+  }
+}

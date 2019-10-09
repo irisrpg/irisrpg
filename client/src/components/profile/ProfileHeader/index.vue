@@ -12,7 +12,7 @@
                                 <span v-if="profile.isLeader" class="badge badge-pill bg-green">Líder</span>
                                 <span v-if="profile.isCurator" class="badge badge-pill bg-green">Curador</span>
                                 <span v-if="profile.isDev" class="badge badge-pill bg-dark">Desenvolvedor</span>
-                                <span v-for="title in profile.titles" :class="['badge','badge-pill','bg-'+title.class]">{{ title.name }}</span>
+                                <span v-for="title in profile.titles" v-bind:key="title.name" :class="['badge','badge-pill','bg-'+title.class]">{{ title.name }}</span>
                             </span>
                         </div>
                     </div>
@@ -41,6 +41,33 @@
 export default {
     name: 'profile_header',
     props: ['profile'],
+    created() {
+        if(this.profile.media.profileBackground) {
+            if (this.profile.media.profileBackground.substring(0, 5) !== 'https') {
+                this.profile.media.profileBackground = window.cloudinary + this.profile.media.profileBackground;
+            }
+        }
+
+        if(this.profile.media.profilePicture) {
+            if (this.profile.media.profilePicture.substring(0, 5) !== 'https') {
+                this.profile.media.profilePicture = window.cloudinary + this.profile.media.profilePicture;
+            }
+        }
+        
+    },
+    updated() {
+        if(this.profile.media.profileBackground) {
+            if (this.profile.media.profileBackground.substring(0, 5) !== 'https') {
+                this.profile.media.profileBackground = window.cloudinary + this.profile.media.profileBackground;
+            }
+        }
+
+        if(this.profile.media.profilePicture) {
+            if (this.profile.media.profilePicture.substring(0, 5) !== 'https') {
+                this.profile.media.profilePicture = window.cloudinary + this.profile.media.profilePicture;
+            }
+        }
+    },
     methods: {
         resetTabs: function() {
             document.getElementById("nav-posts").classList.remove("show");

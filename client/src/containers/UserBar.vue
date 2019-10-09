@@ -34,16 +34,10 @@
 					centered: true
 				}).then(value => {
 					if(value) {
-						var vueCMP = this;
-						this.$http({
-							"method": "GET",
-							"url": "http://api.sigamecar.com.br/auth/logout",
-						}).then(function(response) {
-							localStorage.removeItem('user');
-							localStorage.removeItem('jwt');
-							vueCMP.$emit('loggedOut');
-							vueCMP.$router.go();
-						});						
+						localStorage.removeItem('user');
+						localStorage.removeItem('jwt');
+						this.$emit('loggedOut');
+						this.$router.go();
 					}
 				});
 			}

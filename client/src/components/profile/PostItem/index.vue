@@ -9,7 +9,7 @@
                         <span v-if="post.author.isLeader" class="badge badge-pill bg-green">Líder</span>
                         <span v-if="post.author.isCurator" class="badge badge-pill bg-green">Curador</span>
                         <span v-if="post.author.isDev" class="badge badge-pill bg-dark">Desenvolvedor</span>
-                        <span v-for="title in post.author.titles" :class="['badge','badge-pill','text-white','bg-'+title.class]">{{ title.name }}</span>
+                        <span v-for="title in post.author.titles" v-bind:key="title.id" :class="['badge','badge-pill','text-white','bg-'+title.class]">{{ title.name }}</span>
                     </span>
                 </span>
                 <span class="title">{{ post.title }}</span>
@@ -43,7 +43,7 @@
                 </div>
             </div>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item commentLine" v-for="comment in post.lastComments">
+                <li class="list-group-item commentLine" v-for="comment in post.lastComments" v-bind:key="comment.id">
                     <Comment :comment="comment"/>
                 </li>
                 <li class="list-group-item p-0">

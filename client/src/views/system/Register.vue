@@ -8,12 +8,6 @@
               <b-form>
                 <h1><i class="fa fa-user-plus mr-2"></i> Criar conta</h1>
                 <p class="text-muted">Crie sua conta facílmente!</p>
-                <b-input-group class="mb-3">
-                  <b-input-group-prepend>
-                    <b-input-group-text><i class="icon-user"></i></b-input-group-text>
-                  </b-input-group-prepend>
-                  <b-form-input type="text" class="form-control" placeholder="Nome Completo" v-model="username" autocomplete="username" required autofocus/>
-                </b-input-group>
 
                 <b-input-group class="mb-3">
                   <b-input-group-prepend>
@@ -78,27 +72,21 @@ export default {
     handleSubmit() {
       if (this.password.length > 0 && this.password == this.password_verify) {
         var vueCMP = this;
-        this.$http.post("/auth/register", {
-          name: this.username,
-          email: this.email,
-          password: this.password
+        this.$http.post("/registration", {
+          payload: {
+            email: this.email,
+            password: this.password,
+            passwordConfirmation: this.password_verify
+          }
         }).then(response => {
           vueCMP.$router.push({ name: 'login', query: { registered: true }});
         }).catch(function(error) {
-          if(error.response.status == 409) {
-            vueCMP.$bvToast.toast('Usuário já existente!', {
-                title: `Erro!`,
-                variant: 'danger',
-                solid: true
-            });
-          } else {
-            vueCMP.$bvToast.toast('Um erro ocorreu ao tentar executar ação', {
-                title: `Erro!`,
-                variant: 'danger',
-                solid: true
-            });
-            console.error(error);
-          }
+          vueCMP.$bvToast.toast('Um erro ocorreu ao tentar executar ação', {
+              title: `Erro!`,
+              variant: 'danger',
+              solid: true
+          });
+          console.error(error);
         });
       } else {
         this.$bvToast.toast('Por favor verifique todos os campos', {

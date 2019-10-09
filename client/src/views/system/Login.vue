@@ -73,39 +73,38 @@ export default {
       e.preventDefault();
       if (this.password.length > 0) {
         var vueCMP = this;
-        this.$http.get("https://api.ipify.org/?format=json").then(response => {
-          this.$http.post("/auth/login", {
+        this.$http.post("/session", {
+          payload: {
             email: this.email,
-            password: this.password,
-            ip: response.data.ip
-          }).then(response => {
-            localStorage.setItem('user', JSON.stringify(response.data.user));
-            localStorage.setItem('jwt', response.data.token);
+            password: this.password
+          }
+        }).then(response => {
+          // localStorage.setItem('user', JSON.stringify(response.data.user));
+          localStorage.setItem('jwt', response.data.token);
 
-            if(localStorage.getItem('jwt') != null) {
-              this.$emit('loggedIn');
-              if(this.$route.params.nextUrl != null) {
-                this.$router.push(this.$route.params.nextUrl);
-              } else {
-                this.$router.push('dashboard')
-              }
-            }
-          }).catch(function(error) {
-            if(error.response.status == 401) {
-              vueCMP.$bvToast.toast('Usuário ou senha inválida!', {
-                  title: `Erro!`,
-                  variant: 'danger',
-                  solid: true
-              });
+          if(localStorage.getItem('jwt') != null) {
+            this.$emit('loggedIn');
+            if(this.$route.params.nextUrl != null) {
+              this.$router.push(this.$route.params.nextUrl);
             } else {
-              vueCMP.$bvToast.toast('Um erro ocorreu ao tentar executar ação', {
-                  title: `Erro!`,
-                  variant: 'danger',
-                  solid: true
-              });
-              console.error(error);
+              this.$router.push('dashboard')
             }
-          });
+          }
+        }).catch(function(error) {
+          if(error.response.status == 401) {
+            vueCMP.$bvToast.toast(error.response.data.message, {
+                title: `Erro!`,
+                variant: 'danger',
+                solid: true
+            });
+          } else {
+            vueCMP.$bvToast.toast('Um erro ocorreu ao tentar executar ação', {
+                title: `Erro!`,
+                variant: 'danger',
+                solid: true
+            });
+            console.error(error);
+          }
         });
       }
     }

@@ -15,7 +15,7 @@ const group = (name) => {
 
 export default [
     // home page
-    page("Dashboard", "/dashboard", "dashboard"),
+    page("Inicio", "/dashboard", "dashboard"),
 
     // profile group
     group("Perfil"),
