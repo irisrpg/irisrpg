@@ -1,4 +1,9 @@
-## Iris RPG [![Build Status](https://travis-ci.org/irisrpg/irisrpg.svg?branch=master)](https://travis-ci.org/irisrpg/irisrpg) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+# [![IrisRPG](https://static.thenounproject.com/png/763027-200.png)](http://github.com/irisrpg/irisrpg) Iris RPG
+
+  RPG de forma fácil!
+
+  [![Build Status](https://travis-ci.org/irisrpg/irisrpg.svg?branch=master)](https://travis-ci.org/irisrpg/irisrpg)
+  [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 Iris é um sistema feito para RPG's onlines(Como Dungeons & Dragons, Tormenta 3D&T e outros).
 Ele conta com um sistema de criação de personagens, loja de itens, salas de encenações, sistema de quest e muitos outros!
